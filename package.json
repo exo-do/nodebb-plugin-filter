@@ -1,0 +1,23 @@
+{
+  "name": "nodebb-plugin-recentsfilter",
+  "version": "0.0.1",
+  "description": "This plugin allows to filter topics in the recents page by title name and tags",
+  "main": "library.js",
+  "repository": {
+    "type": "git",
+    "url": "??"
+  },
+  "keywords": [
+    "nodebb",
+    "plugin",
+    "latch",
+    "shell"
+  ],
+  "author": {
+    "name": "Alberto Segura",
+    "email": "alberto.segura.delgado@gmail.com"
+  },
+  "bugs": {
+    "url": "??/issues"
+  }
+}
