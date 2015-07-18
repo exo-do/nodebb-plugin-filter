@@ -9,7 +9,7 @@ var plugin = {};
 SocketPlugins.updateRecentsFilters = function(socket, data, callback) {
   // Receive filters over websockets
 
-  var filters = JSON.stringtify(data.filters);
+  var filters = JSON.stringify(data);
 
   User.setUserField(socket.uid, "rencentsfilters", filters, function(err, result){
     callback(err, result);

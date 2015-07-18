@@ -6,8 +6,8 @@ To use this pluging you MUST put this code in your recent.tpl file of your theme
 
 ```
 <!-- Recents Filter Plugin Code -->
-	<a href="javascript:showHideFilters()">Filtros..</a>
-	<div id="filtersContainer">
+	<a href="#!" onclick="showHideFilters()">Filtros <i class="fa fa-long-arrow-right"></i></a>
+	<div id="filtersContainer" style="display:none">
 		<div class="col-xs-4">
 			<label class="control-label" for="excludedTitleWords">Filtro de palabras en título (los hilos que contengan alguna de estas palabras en el título se ocultarán)</label>
 			<br>
@@ -26,7 +26,9 @@ To use this pluging you MUST put this code in your recent.tpl file of your theme
 			<input class="col-xs-12" type="text" id="onlyThisTags" placeholder="Separadas por espacios">
 		</div>
 		<br>
-		<a id="submitBtn" href="javascript:saveFilters()" class="btn btn-primary right">Guardar filtros</a>
+		<br>
+		<a align="center" id="submitBtn" href="#!" onclick="saveFilters()" class="btn btn-primary left">Guardar filtros</a>
+		<br>
 		<br>
 	</div>
 
