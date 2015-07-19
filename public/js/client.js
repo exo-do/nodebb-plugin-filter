@@ -8,7 +8,7 @@
 			var excludedTags = $("#excludedTags");
 			var onlyThisTags = $("#onlyThisTags");
 
-			if(excludedTags)
+			if(excludedTags && document.URL.indexOf("/recent") >=0 )
 			{
 				socket.emit("plugins.getRecentsFilters", {}, function(err, res){
 					if(!err && res)
