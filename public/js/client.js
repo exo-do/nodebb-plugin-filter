@@ -3,26 +3,29 @@
 	
 	init = function()
 	{
-		$(window).on('action:ajaxify.contentLoaded', function (){
-			var excludedTitleWords = $("#excludedTitleWords");
-			var excludedTags = $("#excludedTags");
-			var onlyThisTags = $("#onlyThisTags");
+		$(window).on('action:ajaxify.contentLoaded', filterTopics);
+		$(window).on('action:topics.loaded', filterTopics);
+	}
 
-			if(excludedTags && document.URL.indexOf("/recent") >=0 )
-			{
-				socket.emit("plugins.getRecentsFilters", {}, function(err, res){
-					if(!err && res)
-					{
-						var filters = JSON.parse(res);
-						localStorage.recentFilters = res;
-						excludedTitleWords.val(filters.excludedTitleWords);
-						excludedTags.val(filters.excludedTags);
-						onlyThisTags.val(filters.onlyThisTags);
-						filterRecentsList();
-					}
-				});
-			}
-		});
+	filterTopics = function(){
+		var excludedTitleWords = $("#excludedTitleWords");
+		var excludedTags = $("#excludedTags");
+		var onlyThisTags = $("#onlyThisTags");
+
+		if(excludedTags && document.URL.indexOf("/recent") >=0 )
+		{
+			socket.emit("plugins.getRecentsFilters", {}, function(err, res){
+				if(!err && res)
+				{
+					var filters = JSON.parse(res);
+					localStorage.recentFilters = res;
+					excludedTitleWords.val(filters.excludedTitleWords);
+					excludedTags.val(filters.excludedTags);
+					onlyThisTags.val(filters.onlyThisTags);
+					filterRecentsList();
+				}
+			});
+		}
 	}
 
 
