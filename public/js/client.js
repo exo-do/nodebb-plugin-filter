@@ -12,7 +12,7 @@
 		var excludedTags = $("#excludedTags");
 		var onlyThisTags = $("#onlyThisTags");
 
-		if(excludedTags && document.URL.indexOf("/recent") >=0 )
+		if(excludedTags && (document.URL.indexOf("/recent") >=0 || document.URL.indexOf("/category") >=0)  )
 		{
 			socket.emit("plugins.getRecentsFilters", {}, function(err, res){
 				if(!err && res)

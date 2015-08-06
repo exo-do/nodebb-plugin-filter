@@ -2,7 +2,7 @@
 
 This plugin allows to filter topics in the recents page by title name and tags
 
-To use this pluging you MUST put this code in your recent.tpl file of your theme. And put the styles you like :)
+To use this pluging you MUST put this code in your recent.tpl or category.tpl file of your theme. And put the styles you like :)
 
 ```
 <!-- Recents Filter Plugin Code -->
