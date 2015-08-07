@@ -5,6 +5,7 @@
 	{
 		$(window).on('action:ajaxify.contentLoaded', filterTopics);
 		$(window).on('action:topics.loaded', filterTopics);
+		$(window).on('action:categories.loaded', filterTopics);
 	}
 
 	filterTopics = function(){
