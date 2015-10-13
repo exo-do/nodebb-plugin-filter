@@ -12,6 +12,7 @@
 		var excludedTitleWords = $("#excludedTitleWords");
 		var excludedTags = $("#excludedTags");
 		var onlyThisTags = $("#onlyThisTags");
+		var topicCreationFilter = $("#topicCreation");
 
 		if(excludedTags && (document.URL.indexOf("/recent") >=0 || document.URL.indexOf("/category") >=0)  )
 		{
@@ -23,6 +24,7 @@
 					excludedTitleWords.val(filters.excludedTitleWords);
 					excludedTags.val(filters.excludedTags);
 					onlyThisTags.val(filters.onlyThisTags);
+					topicCreationFilter.val(filters.topicCreationFilter);
 					filterRecentsList();
 				}
 			});
@@ -47,7 +49,8 @@
 		var excludedTitleWords = $("#excludedTitleWords").val();
 		var excludedTags = $("#excludedTags").val();
 		var onlyThisTags = $("#onlyThisTags").val();
-		socket.emit("plugins.updateRecentsFilters", {excludedTitleWords:excludedTitleWords, excludedTags:excludedTags, onlyThisTags:onlyThisTags}, function(err, res){
+		var topicCreationFilter = $("#topicCreation").val();
+		socket.emit("plugins.updateRecentsFilters", {excludedTitleWords:excludedTitleWords, excludedTags:excludedTags, onlyThisTags:onlyThisTags, topicCreationFilter:topicCreationFilter}, function(err, res){
 			if(err)
 			{
 				app.alert({
@@ -80,6 +83,7 @@
 		var excludedTitleWords = $("#excludedTitleWords").val().split(" ");
 		var excludedTags = $("#excludedTags").val().split(" ");
 		var onlyThisTags = $("#onlyThisTags").val().split(" ");
+		var topicCreationFilter = $("#topicCreation").val();
 
 		for(var i=0;i<topics.length;i++)
 		{
@@ -108,6 +112,15 @@
 				{
 					$(topics[i]).hide();
 				}
+			}
+
+			var topicCreation = $(topics[i]).find(".timeago").attr("title");
+			var topicCreationSince = moment(topicCreation).fromNow();
+			var numberSince = parseInt(topicCreationSince.match(/[0-9]+/ig));
+			console.log(numberSince + " " + topicCreationFilter);
+			if(numberSince >= topicCreationFilter && topicCreationSince.indexOf("month")>=0 )
+			{
+				$(topics[i]).hide();
 			}
 			
 		}
