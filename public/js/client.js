@@ -117,7 +117,6 @@
 			var topicCreation = $(topics[i]).find(".timeago").attr("title");
 			var topicCreationSince = moment(topicCreation).fromNow();
 			var numberSince = parseInt(topicCreationSince.match(/[0-9]+/ig));
-			console.log(numberSince + " " + topicCreationFilter);
 			if(numberSince >= topicCreationFilter && topicCreationSince.indexOf("month")>=0 )
 			{
 				$(topics[i]).hide();
